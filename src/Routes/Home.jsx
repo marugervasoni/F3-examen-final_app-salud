@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Components/Card'
 import axios from 'axios'
+import { Outlet } from 'react-router-dom'
+import { useContextGlobal } from '../Components/utils/global.context'
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 //PAGINA DE INICIO DE LA WEB
-const url = "https://jsonplaceholder.typicode.com/users"
+
+// fetch debe ir en global context
+// const url = "https://jsonplaceholder.typicode.com/users"
 
 const Home = () => {
 
-  const [dentist, setDentist] = useState([])
+  const {dentist, axiosData} = useContextGlobal()
 
- useEffect(() => {
-  const axiosData = async () => {
-    const response = await axios.get(url)
-    setDentist(response.data)
-    console.log(response.data);
-  }
-  axiosData()
- }, []) 
+  useEffect(() => {
+    axiosData()
+  }, []) 
   
 
   return (
+    <>
+    <Outlet/>
     <main className="" >
       <h1>Home</h1>
       <div className='card-grid'>
@@ -29,6 +30,7 @@ const Home = () => {
         {dentist.map(item => <Card key={item.id} name={item.name} username={item.username} id={item.id}/>) }
       </div>
     </main>
+    </>
   )
 }
 
