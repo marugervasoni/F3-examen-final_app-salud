@@ -15,11 +15,11 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home/>}>
+              {/* <Route path="*" element={<NotFound/>}/> */}
+            </Route>
               <Route path="/dentist/:id" element={<Detail/>}/>
               <Route path="/contacto" element={<Contact/>}/>
               <Route path="/favs" element={<Favs/>}/>
-              {/* <Route path="*" element={<NotFound/>}/> */}
-            </Route>
           </Routes>
           
           <Footer/>

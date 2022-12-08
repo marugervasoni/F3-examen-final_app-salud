@@ -11,15 +11,16 @@ const Navbar = () => {
 
   return (
     <nav>
-      {/* <img src="/images/DH.png" alt="dh" /> */}
+      {/* fijarse si consigo png dh odonto */}
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
       <Link to='/' >Home</Link>
-      <Link to='contacto' >Contact</Link>
+      <Link to='/contacto' >Contact</Link>
       {/* faltaria linkear dentist id */}
-      <Link to='favs' >Favs</Link>
+      <Link to='/favs' >Favs</Link>
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
           {/* al boton le agregue el evento y los estilos pero no funciona bien */}
       <button onClick={handleChangeTheme} style={{background: theme.background, font: theme.font}}>Change theme</button>
+      {/* hacer un ternario para poner botoncito luna o sol */}
     </nav>
   )
 }

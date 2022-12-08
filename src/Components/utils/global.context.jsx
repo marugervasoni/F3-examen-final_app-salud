@@ -9,8 +9,12 @@ import ThemeContext, {themes} from "./ThemeContext";
 
 const url= "https://jsonplaceholder.typicode.com/users"
 
+// fijarse que en css hay config para dark
 // export const initialState = {theme: "light", data: []}
-export const initialState = {theme: "", data: []}
+export const initialState = {
+  theme: "", 
+  data: ["https://jsonplaceholder.typicode.com/users"]
+}
 
 
 //CREACION DELCONTEXTO
@@ -23,7 +27,7 @@ console.log(ContextGlobal);
 export const ContextProvider = ({ children }) => {
   // declarar estados a necesitar
   const [theme, setTheme] = useState(themes.light);
-  const [dentist, setDentist] = useState([])
+  const [data, setData] = useState([])
 
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
   const handleChangeTheme = () => {
@@ -32,8 +36,9 @@ export const ContextProvider = ({ children }) => {
   }
 
   const axiosData = async () => {
+    // const response = await axios.get(initialState.data)
     const response = await axios.get(url)
-    setDentist(response.data)
+    setData(response.data)
     console.log(response.data);
   }
   
@@ -43,8 +48,8 @@ export const ContextProvider = ({ children }) => {
       theme,
       handleChangeTheme,
       axiosData,
-      dentist,
-      setDentist
+      data,
+      setData
     }}>
       {children}
     </ContextGlobal.Provider>

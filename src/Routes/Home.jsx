@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Components/Card'
-import axios from 'axios'
 import { Outlet } from 'react-router-dom'
 import { useContextGlobal } from '../Components/utils/global.context'
 
@@ -13,7 +12,7 @@ import { useContextGlobal } from '../Components/utils/global.context'
 
 const Home = () => {
 
-  const {dentist, axiosData} = useContextGlobal()
+  const {data, axiosData} = useContextGlobal()
 
   useEffect(() => {
     axiosData()
@@ -27,7 +26,7 @@ const Home = () => {
       <h1>Home</h1>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
-        {dentist.map(item => <Card key={item.id} name={item.name} username={item.username} id={item.id}/>) }
+        {data.map(item => <Card key={item.id} name={item.name} username={item.username} id={item.id}/>) }
       </div>
     </main>
     </>

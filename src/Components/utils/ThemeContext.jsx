@@ -1,3 +1,4 @@
+
 import React, {createContext} from 'react'
 
 //tema de colores para toda la app, FALTA revisar para hacer estilos acorde al demo
